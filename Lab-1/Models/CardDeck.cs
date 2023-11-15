@@ -19,6 +19,7 @@ public class CardDeck
 
     public Card GetCard()
     {
+        
         if (CountOfCardsInDeck() < 1)
         {
             throw new OutOfCardsExceptions("This deck is empty");

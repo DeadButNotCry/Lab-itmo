@@ -16,7 +16,7 @@ public class Croupier : ICroupier
     private void ShuffleCards()
     {
         var half = CardDeck.CountOfCardsInDeck() / 2;
-        var shuffledDeck = new List<Card>(CardDeck.CountOfCardsInDeck());
+        var shuffledDeck = new List<Card>(CardDeck.Cards);
         for (int i = 0; i < half; i++)
         {
             shuffledDeck[i * 2] = CardDeck.Cards[i + half];

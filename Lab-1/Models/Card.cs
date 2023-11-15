@@ -52,4 +52,9 @@ public class Card : IComparable
         // We multiply result of comparing cuz in enum ace has index 1, but it's the most powerful 
         return -1 * Power.CompareTo(otherCard.Power);
     }
+
+    public override string ToString()
+    {
+        return $"{Power} - {Suit}";
+    }
 }
