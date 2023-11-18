@@ -55,6 +55,6 @@ public class Card : IComparable
 
     public override string ToString()
     {
-        return $"{Power} -  {Suit}";
+        return $"{Power} - {Suit}";
     }
 }
