@@ -1,4 +1,6 @@
-﻿namespace Lab1_Tests;
+﻿using Lab_1.Models;
+
+namespace Lab1_Tests;
 
 public class CroupierTests
 {
