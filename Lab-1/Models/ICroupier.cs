@@ -2,6 +2,5 @@
 
 public interface ICroupier
 {
-    public void TakeNewCardDeck();
-
+    void SetNewCardDeck(CardDeck cardDeck);
 }

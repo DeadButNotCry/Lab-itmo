@@ -12,7 +12,7 @@ public class CardDeckTests
         var cardDeck = new CardDeck();
 
         // Act
-        var count = cardDeck.CountOfCardsInDeck();
+        var count = cardDeck.Cards.Count;
 
         // Assert
         Assert.Equal(52, count);
@@ -75,9 +75,23 @@ public class CardDeckTests
 
         // Act
         var cards = cardDeck.GetCards(count);
-        var remainingCount = cardDeck.CountOfCardsInDeck();
+        var remainingCount = cardDeck.Cards.Count;
 
         // Assert
         Assert.Equal(52 - count, remainingCount);
+    }
+
+    [Fact]
+    public void CardDeck_ShuffleCards_ShufflesCard()
+    {
+        // Arrange
+        var cardDeck = new CardDeck();
+        var shuffledCardDeck = new CardDeck();
+
+        // Act
+        shuffledCardDeck.ShuffleCards();
+
+        // Assert
+        Assert.NotEqual(cardDeck.Cards, shuffledCardDeck.Cards);
     }
 }

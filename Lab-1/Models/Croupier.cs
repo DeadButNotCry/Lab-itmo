@@ -6,30 +6,16 @@ public class Croupier : ICroupier
 {
     public CardDeck CardDeck { get; private set; }
 
-    public Croupier()
+    public Croupier(CardDeck cardDeck)
     {
-        CardDeck = new CardDeck();
-        ShuffleCards();
+        cardDeck.ShuffleCards();
+        CardDeck = cardDeck;
     }
 
 
-    private void ShuffleCards()
+    public void SetNewCardDeck(CardDeck cardDeck)
     {
-        var half = CardDeck.CountOfCardsInDeck() / 2;
-        var shuffledDeck = new List<Card>(CardDeck.CountOfCardsInDeck());
-        for (int i = 0; i < half; i++)
-        {
-            shuffledDeck[i * 2] = CardDeck.Cards[i + half];
-            shuffledDeck[i * 2 + 1] = CardDeck.Cards[i];
-        }
-
-        CardDeck.Cards = shuffledDeck;
-    }
-
-
-    public void TakeNewCardDeck()
-    {
-        CardDeck = new CardDeck();
-        ShuffleCards();
+        CardDeck = cardDeck;
+        CardDeck.ShuffleCards();
     }
 }

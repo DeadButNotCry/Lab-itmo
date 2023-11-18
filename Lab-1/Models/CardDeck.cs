@@ -4,28 +4,24 @@ namespace Lab_1.Models;
 
 public class CardDeck
 {
-    public List<Card> Cards { get; set; } = new();
+    public List<Card> Cards { get; private set; }
 
     public CardDeck()
     {
-        foreach (var power in Enum.GetValues<PowerOfCard>())
-        {
-            foreach (var suit in Enum.GetValues<Suits>())
-            {
-                Cards.Add(new Card(power, suit));
-            }
-        }
+        Cards = Enum.GetValues<PowerOfCard>()
+            .SelectMany(power => Enum.GetValues<Suits>()
+                .Select(suit => new Card(power, suit))).ToList();
     }
 
     public Card GetCard()
     {
-        if (CountOfCardsInDeck() < 1)
+        if (Cards.Count < 1)
         {
             throw new OutOfCardsExceptions("This deck is empty");
         }
 
         var card = Cards[0];
-        Cards.Remove(card);
+        Cards.RemoveAt(0);
         return card;
     }
 
@@ -36,7 +32,7 @@ public class CardDeck
             throw new ArgumentException($"{nameof(count)} must be positive and non zero");
         }
 
-        if (CountOfCardsInDeck() < count)
+        if (Cards.Count < count)
         {
             throw new OutOfCardsExceptions("There are not enough cards in the deck");
         }
@@ -51,6 +47,16 @@ public class CardDeck
         return result;
     }
 
+    public void ShuffleCards()
+    {
+        var half = Cards.Count / 2;
+        var shuffledDeck = new List<Card>(Cards);
+        for (int i = 0; i < half; i++)
+        {
+            shuffledDeck[i * 2] = Cards[i + half];
+            shuffledDeck[i * 2 + 1] = Cards[i];
+        }
 
-    public int CountOfCardsInDeck() => Cards.Count;
+        Cards = shuffledDeck;
+    }
 }

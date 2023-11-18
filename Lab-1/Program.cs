@@ -2,4 +2,10 @@
 
 using Lab_1.Models;
 
-Console.WriteLine("Hello, World!");
+var deck = new CardDeck();
+var dealer = new Croupier(deck);
+
+foreach (var card in dealer.CardDeck.Cards)
+{
+    Console.WriteLine(card);
+}
