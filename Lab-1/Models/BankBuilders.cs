@@ -10,20 +10,23 @@ public interface IBankBuilder
 
 public class PlayerBankBuilder : IBankBuilder
 {
-    private const long MIN_INIT_BALANCE = 10000;
-    private const long MAX_INIT_BALANCE = 100000;
+    private long minInitBalance;
+    private long maxInitBalance;
 
     private Bank currentInstanceOfBank;
 
-    public PlayerBankBuilder()
+
+    public PlayerBankBuilder(long minInitBalance, long maxInitBalance)
     {
-        this.currentInstanceOfBank = new Bank();
+        currentInstanceOfBank = new Bank();
+        this.minInitBalance = minInitBalance;
+        this.maxInitBalance = maxInitBalance;
     }
 
     public void BuildBalance()
     {
         var rnd = new Random();
-        currentInstanceOfBank.AddMoney(rnd.NextInt64(MIN_INIT_BALANCE, MAX_INIT_BALANCE));
+        currentInstanceOfBank.AddMoney(rnd.NextInt64(minInitBalance, maxInitBalance));
     }
 
     public Bank GetBank()

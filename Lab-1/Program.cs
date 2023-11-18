@@ -3,8 +3,5 @@
 using Lab_1.Models;
 
 Console.WriteLine("Hello, World!");
-var dealer = new Croupier();
-foreach (var card in dealer.CardDeck.Cards)
-{
-    Console.WriteLine(card);
-}
+var casino = new BlackJackCasino();
+casino.CreateCasinoPlayer();
