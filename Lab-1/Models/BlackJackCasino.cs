@@ -20,8 +20,8 @@ public class BlackJackCasino
 
         _casinoBankBuilder.BuildBalance();
         _casinoBank = _casinoBankBuilder.GetBank();
-
-        _croupier = new Croupier();
+        var deck = new CardDeck();
+        _croupier = new Croupier(deck);
     }
 
     public void AddPlayerBalance(Player player, decimal amount)

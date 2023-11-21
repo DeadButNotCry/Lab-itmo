@@ -12,6 +12,7 @@ public class BlackJackCasinoTests
         casino.CreateCasinoPlayer();
         casino.Players[0].Cards.Add(new Card(PowerOfCard.Ace, Suits.Hearts));
         casino.Players[0].Cards.Add(new Card(PowerOfCard.Ten, Suits.Diamonds));
+        casino.Players[0].Bet = 1500;
 
         // Act
         var result = casino.CheckForBlackJack(casino.Players[0]);
